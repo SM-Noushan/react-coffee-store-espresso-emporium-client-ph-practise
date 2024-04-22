@@ -7,12 +7,12 @@ const Root = () => {
   return (
     <>
       <NavBar />
-      <main className="min-h-[calc(100dvh-196.58px)] font-raleway">
+      <main className="font-raleway">
         <Outlet />
       </main>
-      <div className="bg-[url('/assets/images/more/10.png')] bg-cover bg-no-repeat font-raleway">
+      <footer className="bg-[url('/assets/images/more/10.png')] bg-cover bg-no-repeat font-raleway">
         <Contact />
-      </div>
+      </footer>
       <FooTer />
     </>
   );
