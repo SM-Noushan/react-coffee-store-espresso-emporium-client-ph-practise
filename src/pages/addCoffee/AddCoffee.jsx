@@ -24,7 +24,7 @@ const AddCoffee = () => {
   return (
     <section className="max-w-md sm:container xl:max-w-screen-xl mx-auto mt-8 mb-16">
       <HomeButton />
-      <div className="bg-white-3f0 rounded-md py-[70px] px-10 md:px-16 lg:px-[112px]">
+      <div className="bg-white-3f0 rounded-md py-[70px] px-10 md:px-16 lg:px-[112px] mt-8">
         <div className="*:!text-blue-151 text-center">
           <SectionHeadings heading="Add New Coffee" />
         </div>

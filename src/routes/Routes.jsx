@@ -3,6 +3,7 @@ import Root from "../layouts/Root";
 import Home from "../pages/home/Home";
 import Error from "../pages/error/Error";
 import AddCoffee from "../pages/addCoffee/AddCoffee";
+import CoffeeDetails from "../pages/viewDetails/CoffeeDetails";
 
 export const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ export const router = createBrowserRouter([
       {
         path: "/add-coffee",
         element: <AddCoffee />,
+      },
+      {
+        path: `/coffee-details`,
+        element: <CoffeeDetails />,
       },
       {
         path: "/404-error",

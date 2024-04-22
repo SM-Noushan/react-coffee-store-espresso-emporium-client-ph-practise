@@ -7,7 +7,7 @@ const CoffeeCard = () => {
       <div>
         <img className="" src="/assets/images/1.png" alt="popular-coffee-img" />
       </div>
-      <div className="*:text-coffee-a1a lg:*:text-lg xl:*:text-xl *:font-medium flex-1">
+      <div className="*:text-coffee-a1a lg:*:text-lg xl:*:text-xl *:font-semibold flex-1">
         <p>
           Name:
           <span className="text-dark-b5b font-normal"> Americano Coffee</span>
@@ -20,7 +20,7 @@ const CoffeeCard = () => {
         </p>
       </div>
       <div className="flex lg:flex-col pt-4 lg:pt-0 lg:pl-4 gap-3 text-white *:rounded-md *:p-2 self-center md:self-end lg:self-center">
-        <Link className="bg-orange-577 ">
+        <Link to={`/coffee-details`} className="bg-orange-577 ">
           <FaRegEye />
         </Link>
         <Link className="bg-dark-93b">
