@@ -5,7 +5,7 @@ import logo from "/assets/images/more/logo1.png";
 const Contact = () => {
   const headingCSS = "font-rancho text-coffee-a15 text-[35px] lg:text-[45px]";
   const inputCSS =
-    "py-3.5 px-4 text-coffee-a1a w-[90%] md:w-2/3 placeholder:text-coffee-a1a/60 outline-none focus:ring-1 focus:ring-coffee-a1a focus:rounded-md bg-white";
+    "py-3.5 px-4 text-coffee-a1a w-[90%] md:w-2/3 placeholder:text-coffee-a1a/60 outline-none focus:ring-1 focus:ring-orange-577 focus:rounded-md bg-white";
   return (
     <section className="max-w-md sm:container xl:max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center gap-12 md:gap-20 xl:gap-28 pt-[120px] pb-[48px]">
       <div className="">
@@ -41,7 +41,7 @@ const Contact = () => {
       </div>
       <div className="lg:flex-grow w-full max-w-lg mx-auto lg:w-auto ">
         <h1 className={`${headingCSS}`}>Connect with Us</h1>
-        <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
+        <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
           <input type="text" placeholder="Name" className={inputCSS} />
           <br />
           <input type="text" placeholder="Email" className={inputCSS} />
