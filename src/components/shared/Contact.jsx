@@ -7,7 +7,7 @@ const Contact = () => {
   const inputCSS =
     "py-3.5 px-4 text-coffee-a1a w-[90%] md:w-2/3 placeholder:text-coffee-a1a/60 outline-none focus:ring-1 focus:ring-orange-577 focus:rounded-md bg-white";
   return (
-    <section className="max-w-md sm:container xl:max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center gap-12 md:gap-20 xl:gap-28 pt-[120px] pb-[48px]">
+    <section className="max-w-md sm:container xl:max-w-screen-xl mx-auto flex flex-col lg:flex-row items-center gap-12 md:gap-20 xl:gap-28 pb-[48px]">
       <div className="">
         <img src={logo} alt="website-logo" className="w-20 mb-4" />
         <h1 className={headingCSS}>Espresso Emporium</h1>

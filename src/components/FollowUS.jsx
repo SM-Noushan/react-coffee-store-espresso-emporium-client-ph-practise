@@ -38,10 +38,12 @@ const cups = [
 const FollowUS = () => {
   return (
     <section className="my-24">
-      <SectionHeadings
-        subHeading="Follow Us Now"
-        heading="Follow on Instagram"
-      />
+      <div className="text-center">
+        <SectionHeadings
+          subHeading="Follow Us Now"
+          heading="Follow on Instagram"
+        />
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
         {cups.map(({ url }, key) => (
           <img key={key} src={url} alt="cup-1" />
