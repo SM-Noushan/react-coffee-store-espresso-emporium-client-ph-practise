@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CoffeeCard from "./CoffeeCard";
 import SectionHeadings from "./SectionHeadings";
 import MyButton from "./shared/MyButton";
@@ -25,12 +26,9 @@ const PopularProducts = () => {
           subHeading="--- Sip & Savor ---"
           heading="Our Popular Products"
         />
-        <MyButton
-          url="/add-coffee"
-          className="*:mx-auto *:mt-4"
-          icon={coffeeSVG}
-          label="Add Coffee"
-        />
+        <Link to="/add-coffee" className="*:mx-auto *:mt-4">
+          <MyButton icon={coffeeSVG} label="Add Coffee" />
+        </Link>
       </div>
       <img
         src="/assets/images/more/1.png"

@@ -2,6 +2,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import Root from "../layouts/Root";
 import Home from "../pages/home/Home";
 import Error from "../pages/error/Error";
+import AddCoffee from "../pages/addCoffee/AddCoffee";
 
 export const router = createBrowserRouter([
   {
@@ -12,6 +13,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/add-coffee",
+        element: <AddCoffee />,
       },
       {
         path: "/404-error",
