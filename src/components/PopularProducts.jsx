@@ -19,7 +19,7 @@ const coffeeSVG = (
 
 const PopularProducts = () => {
   return (
-    <section className="my-24 relative">
+    <section className="my-24 max-w-md sm:container xl:max-w-screen-xl mx-auto">
       <div className="text-center">
         <SectionHeadings
           subHeading="--- Sip & Savor ---"
@@ -35,7 +35,7 @@ const PopularProducts = () => {
       <img
         src="/assets/images/more/1.png"
         alt="banner-image"
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 h-full -z-10"
       />
       <div className="grid grid-cols-2 gap-6 mt-12">
         <CoffeeCard />

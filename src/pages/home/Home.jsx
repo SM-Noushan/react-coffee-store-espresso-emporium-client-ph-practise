@@ -6,8 +6,10 @@ const Home = () => {
   return (
     <>
       <Banner />
-      <section className="max-w-md sm:container xl:max-w-screen-xl mx-auto">
+      <section className="relative">
         <PopularProducts />
+      </section>
+      <section className="max-w-md sm:container xl:max-w-screen-xl mx-auto">
         <FollowUS />
       </section>
     </>
