@@ -1,6 +1,8 @@
 import SectionHeadings from "../../components/SectionHeadings";
 import HomeButton from "../../components/shared/HomeButton";
 import MyButton from "../../components/shared/MyButton";
+import client from "../../utils/axios";
+import Swal from "sweetalert2";
 
 const formInput = (name, placeholder, defaultValue = "") => {
   return (
@@ -9,8 +11,8 @@ const formInput = (name, placeholder, defaultValue = "") => {
       <br />
       <input
         type="text"
-        id={name}
-        name={name}
+        id={name.toLowerCase()}
+        name={name.toLowerCase()}
         className="p-2.5 placeholder:text-coffee-a1a/60 outline-none focus:ring-2 focus:ring-orange-577 focus:rounded-md bg-white w-full"
         placeholder={placeholder}
         defaultValue={defaultValue}
@@ -19,7 +21,54 @@ const formInput = (name, placeholder, defaultValue = "") => {
   );
 };
 
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  },
+});
+
 const AddCoffee = () => {
+  const handleAddCoffeeDetails = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const chef = form.chef.value;
+    const supplier = form.supplier.value;
+    const taste = form.taste.value;
+    const category = form.category.value;
+    const details = form.details.value;
+    const photo = form.photo.value;
+    const coffeeData = {
+      name,
+      chef,
+      supplier,
+      taste,
+      category,
+      details,
+      photo,
+    };
+    // send data to server
+    client("post", "/add-coffee", coffeeData).then((res) => {
+      if (res?.data?.insertedId) {
+        form.reset();
+        Toast.fire({
+          icon: "success",
+          title: "Coffee added successfully",
+        });
+      } else
+        Toast.fire({
+          icon: "error",
+          title: "Something went wrong",
+        });
+    });
+    // console.log(e);
+  };
   const formCSS = "flex flex-col md:flex-row justify-between gap-6 md:*:flex-1";
   return (
     <section className="max-w-md sm:container xl:max-w-screen-xl mx-auto mt-8 mb-16">
@@ -34,13 +83,7 @@ const AddCoffee = () => {
           using Lorem Ipsum is that it has a more-or-less normal distribution of
           letters, as opposed to using Content here.
         </p>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            console.log("object");
-          }}
-          className="space-y-6"
-        >
+        <form onSubmit={(e) => handleAddCoffeeDetails(e)} className="space-y-6">
           <div className={formCSS}>
             {formInput("Name", "Enter coffee name")}
             {formInput("Chef", "Enter coffee chef")}
