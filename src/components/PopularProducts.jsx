@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import CoffeeCard from "./CoffeeCard";
 import SectionHeadings from "./SectionHeadings";
 import MyButton from "./shared/MyButton";
+import PropTypes from "prop-types";
 
 const coffeeSVG = (
   <svg
@@ -18,7 +19,7 @@ const coffeeSVG = (
   </svg>
 );
 
-const PopularProducts = () => {
+const PopularProducts = ({ coffees }) => {
   return (
     <section className="my-24 max-w-md sm:container xl:max-w-screen-xl mx-auto">
       <div className="text-center">
@@ -36,15 +37,16 @@ const PopularProducts = () => {
         className="absolute inset-0 h-full -z-10"
       />
       <div className="grid grid-cols-2 gap-6 mt-12">
-        <CoffeeCard />
-        <CoffeeCard />
-        <CoffeeCard />
-        <CoffeeCard />
-        <CoffeeCard />
-        <CoffeeCard />
+        {coffees.slice(0, 6).map((coffee, key) => (
+          <CoffeeCard key={key} coffee={coffee} />
+        ))}
       </div>
     </section>
   );
+};
+
+PopularProducts.propTypes = {
+  coffees: PropTypes.array.isRequired,
 };
 
 export default PopularProducts;

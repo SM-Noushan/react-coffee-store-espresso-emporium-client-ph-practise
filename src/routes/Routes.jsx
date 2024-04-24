@@ -20,7 +20,7 @@ export const router = createBrowserRouter([
         element: <AddCoffee />,
       },
       {
-        path: `/coffee-details`,
+        path: `/coffee-details/:id`,
         element: <CoffeeDetails />,
       },
       {
