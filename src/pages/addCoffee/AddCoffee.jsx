@@ -3,6 +3,8 @@ import HomeButton from "../../components/shared/HomeButton";
 import MyButton from "../../components/shared/MyButton";
 import client from "../../utils/axios";
 import Swal from "sweetalert2";
+import PropTypes from "prop-types";
+import { useLoaderData, useParams } from "react-router-dom";
 
 const formInput = (name, placeholder, defaultValue = "") => {
   return (
@@ -33,7 +35,11 @@ const Toast = Swal.mixin({
   },
 });
 
-const AddCoffee = () => {
+const AddCoffee = ({ update = false }) => {
+  const coffee = useLoaderData() || {};
+  const { id } = useParams() || 0;
+  const { name, chef, category, taste, supplier, details, photo } = coffee;
+
   const handleAddCoffeeDetails = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -54,12 +60,16 @@ const AddCoffee = () => {
       photo,
     };
     // send data to server
-    client("post", "/add-coffee", coffeeData).then((res) => {
-      if (res?.data?.insertedId) {
-        form.reset();
+    client(
+      update ? "put" : "post",
+      update ? `/update-coffee-details/${id}` : "/add-coffee",
+      coffeeData
+    ).then((res) => {
+      if (res?.data?.insertedId || res?.data?.modifiedCount) {
+        if (!update) form.reset();
         Toast.fire({
           icon: "success",
-          title: "Coffee added successfully",
+          title: `Coffee ${update ? "updated" : "added"} successfully`,
         });
       } else
         Toast.fire({
@@ -67,7 +77,6 @@ const AddCoffee = () => {
           title: "Something went wrong",
         });
     });
-    // console.log(e);
   };
   const formCSS = "flex flex-col md:flex-row justify-between gap-6 md:*:flex-1";
   return (
@@ -85,25 +94,32 @@ const AddCoffee = () => {
         </p>
         <form onSubmit={(e) => handleAddCoffeeDetails(e)} className="space-y-6">
           <div className={formCSS}>
-            {formInput("Name", "Enter coffee name")}
-            {formInput("Chef", "Enter coffee chef")}
+            {formInput("Name", "Enter coffee name", name)}
+            {formInput("Chef", "Enter coffee chef", chef)}
           </div>
           <div className={formCSS}>
-            {formInput("Supplier", "Enter coffee supplier")}
-            {formInput("Taste", "Enter coffee taste")}
+            {formInput("Supplier", "Enter coffee supplier", supplier)}
+            {formInput("Taste", "Enter coffee taste", taste)}
           </div>
           <div className={formCSS}>
-            {formInput("Category", "Enter coffee category")}
-            {formInput("Details", "Enter coffee details")}
+            {formInput("Category", "Enter coffee category", category)}
+            {formInput("Details", "Enter coffee details", details)}
           </div>
-          <div>{formInput("Photo", "Enter photo URL")}</div>
+          <div>{formInput("Photo", "Enter photo URL", photo)}</div>
           <div className="*:w-full *:bg-orange-48c hover:*:bg-orange-577 *:text-coffee-a15">
-            <MyButton type="submit" label="Add Coffee" />
+            <MyButton
+              type="submit"
+              label={`${update ? "Update" : "Add"} Coffee`}
+            />
           </div>
         </form>
       </div>
     </section>
   );
+};
+
+AddCoffee.propTypes = {
+  update: PropTypes.bool,
 };
 
 export default AddCoffee;

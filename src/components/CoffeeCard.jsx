@@ -85,7 +85,7 @@ const CoffeeCard = ({ coffee }) => {
         <Link to={`/coffee-details/${_id}`} className="bg-orange-577 ">
           <FaRegEye />
         </Link>
-        <Link className="bg-dark-93b">
+        <Link to={`/update-coffee-details/${_id}`} className="bg-dark-93b">
           <FaPen />
         </Link>
         <button onClick={() => handleDelete(_id)} className="bg-red-744">
